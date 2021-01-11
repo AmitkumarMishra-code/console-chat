@@ -10,10 +10,9 @@ rl.question("What is your name?\n> ", (name) => {
     socket.on('simple chat message', (incoming) => message(socket, name, incoming))
 })
 function message(socket, name, displayMessage){
-    displayMessage!=undefined && console.log(displayMessage)
+    console.log(displayMessage)
     rl.question("> ", (msg)=> {
         socket.emit("simple chat message", name + ' says: ' + '"' + msg + '"')
-        console.log('Sending Message : "' + msg + '"' )
-        message(socket, name);
+        message(socket, name, 'Sending Message : "' + msg + '"');
     })
 }
